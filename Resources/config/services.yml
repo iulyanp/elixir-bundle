@@ -1,0 +1,9 @@
+services:
+    iulyanp.elixir_extension:
+        class: Iulyanp\ElixirBundle\Twig\ElixirExtension
+        public: false
+        arguments:
+            - '%web_dir%'
+            - '%build_dir%'
+        tags:
+            - { name: twig.extension }
