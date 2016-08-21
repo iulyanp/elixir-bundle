@@ -77,5 +77,24 @@ Now you can use elixir() function to version a file like this:
 <link rel="stylesheet" type="text/css" href="{{ elixir('css/app.css') }}" />
 ```
 
+#### Bundle assets
+By default the bundle assumes that you'll keep your assets files under the `app/Resources/public` folder.
+In case that you have assets on bundles level (ex. src/AppBundle/Resources/public/sass/test.scss) you can compile them with elixir pretty simple.
+For our example you'll have something like this:
+```
+// Set up Elixir tasks.
+elixir(function(mix) {
+    mix.sass('app.scss')
+        .version(['web/css/app.css']);
+
+    mix.sass(
+        'test.scss', // the sass file you want to compile
+        'web/css/test', // the path where you want the compiled css file to be saved
+        'src/AppBundle/Resources/public/sass' // the path where your sass files are kept inside a bundle
+    );
+});
+```
+The `test.css` file will be saved to `web/css/test/test.css`.
+
 ### License
 The ElixirBundle is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
