@@ -3,19 +3,18 @@
 namespace Iulyanp\ElixirBundle\Command;
 
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
-use Symfony\Component\Filesystem\Filesystem;
-use Symfony\Component\Filesystem\Exception\IOExceptionInterface;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Filesystem\Exception\IOExceptionInterface;
+use Symfony\Component\Filesystem\Filesystem;
 
 /**
- * Class ElixirCommand
- * @package Iulyanp\ElixirBundle\Command
+ * Class ElixirCommand.
  */
 class ElixirCommand extends ContainerAwareCommand
 {
     /**
-     * Configure
+     * Configure.
      */
     public function configure()
     {
@@ -56,12 +55,10 @@ class ElixirCommand extends ContainerAwareCommand
             $gulpfilePath = sprintf('%s%s', $rootDir, 'gulpfile.js');
             $fs->touch($gulpfilePath);
             $fs->dumpFile($gulpfilePath, $gulpContent);
-
         } catch (IOExceptionInterface $e) {
             $this->writeError($output, $e->getMessage());
         }
     }
-
 
     private function writeError(OutputInterface $output, $error)
     {
@@ -89,7 +86,7 @@ class ElixirCommand extends ContainerAwareCommand
   }
 }';
     }
-    
+
     private function getGulpfileContent($webDir, $buildDir, $assetsPath = 'app/Resources/assets')
     {
         return "// Import Elixir.
@@ -133,7 +130,7 @@ elixir(function(mix) {
         }
 
         foreach ($checks as $key => $check) {
-            $output->writeln(sprintf("%s %s: %s", '<info>[OK]</info>', $key, $check));
+            $output->writeln(sprintf('%s %s: %s', '<info>[OK]</info>', $key, $check));
         }
     }
 

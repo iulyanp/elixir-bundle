@@ -5,8 +5,7 @@ namespace Iulyanp\ElixirBundle\Tests\Twig;
 use Iulyanp\ElixirBundle\Twig\ElixirExtension;
 
 /**
- * Class ElixirExtensionTest
- * @package Iulyanp\ElixirBundle\Tests\Twig
+ * Class ElixirExtensionTest.
  */
 class ElixirExtensionTest extends \PHPUnit_Framework_TestCase
 {
@@ -14,12 +13,12 @@ class ElixirExtensionTest extends \PHPUnit_Framework_TestCase
     const BUILD_DIR = 'stub';
 
     /**
-     * @var $elixirExtension
+     * @var
      */
     private $elixirExtension;
 
     /**
-     * Set UP
+     * Set UP.
      *
      * Instantiate ElixirExtension for all tests
      */
@@ -55,7 +54,7 @@ class ElixirExtensionTest extends \PHPUnit_Framework_TestCase
     public function elixir_function_throws_error_when_file_not_exists()
     {
         $this->expectException('\Exception');
-        $this->expectExceptionMessage("File css/not_existing.css not defined in asset manifest.");
+        $this->expectExceptionMessage('File css/not_existing.css not defined in asset manifest.');
         $this->elixirExtension->getAssetVersion('css/not_existing.css');
     }
 }
