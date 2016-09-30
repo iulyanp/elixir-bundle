@@ -5,8 +5,7 @@ namespace Iulyanp\ElixirBundle;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**
- * Class IulyanpElixirBundle
- * @package Iulyanp\ElixirBundle
+ * Class IulyanpElixirBundle.
  */
 class IulyanpElixirBundle extends Bundle
 {

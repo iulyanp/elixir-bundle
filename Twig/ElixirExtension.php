@@ -3,8 +3,7 @@
 namespace Iulyanp\ElixirBundle\Twig;
 
 /**
- * Class ElixirExtension
- * @package Iulyanp\ElixirBundle\Twig
+ * Class ElixirExtension.
  */
 class ElixirExtension extends \Twig_Extension
 {
@@ -39,8 +38,9 @@ class ElixirExtension extends \Twig_Extension
     /**
      * @param $asset
      *
-     * @return string
      * @throws \Exception
+     *
+     * @return string
      */
     public function getAssetVersion($asset)
     {
@@ -94,8 +94,9 @@ class ElixirExtension extends \Twig_Extension
     }
 
     /**
-     * @return string
      * @throws \Exception
+     *
+     * @return string
      */
     private function checkManifestFileExists()
     {

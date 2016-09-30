@@ -31,8 +31,7 @@ class Configuration implements ConfigurationInterface
                     ->scalarNode('assets_dir')
                     ->defaultValue('app/Resources/public')
                 ->end()
-            ->end()
-        ;
+            ->end();
 
         return $treeBuilder;
     }

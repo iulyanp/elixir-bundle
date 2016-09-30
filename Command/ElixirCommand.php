@@ -3,19 +3,18 @@
 namespace Iulyanp\ElixirBundle\Command;
 
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
-use Symfony\Component\Filesystem\Filesystem;
-use Symfony\Component\Filesystem\Exception\IOExceptionInterface;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Filesystem\Exception\IOExceptionInterface;
+use Symfony\Component\Filesystem\Filesystem;
 
 /**
- * Class ElixirCommand
- * @package Iulyanp\ElixirBundle\Command
+ * Class ElixirCommand.
  */
 class ElixirCommand extends ContainerAwareCommand
 {
     /**
-     * Configure
+     * Configure.
      */
     public function configure()
     {
@@ -56,7 +55,6 @@ class ElixirCommand extends ContainerAwareCommand
             $gulpfilePath = sprintf('%s%s', $rootDir, 'gulpfile.js');
             $fs->touch($gulpfilePath);
             $fs->dumpFile($gulpfilePath, $gulpContent);
-
         } catch (IOExceptionInterface $e) {
             $this->writeError($output, $e->getMessage());
         }
@@ -139,7 +137,7 @@ elixir(function(mix) {
         $this->writeInfo($output, 'Checking requirements...');
 
         $errors = [];
-        $check = [];
+        $checks = [];
         $requirements = ['node', 'npm', 'gulp'];
         foreach ($requirements as $requirement) {
             if (!$checks[$requirement] = exec($requirement.' -v')) {
