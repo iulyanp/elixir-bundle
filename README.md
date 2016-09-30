@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/iulyanp/elixir-bundle.svg?branch=master)](https://travis-ci.org/iulyanp/elixir-bundle)
+
 ElixirBundle
 ============
 
