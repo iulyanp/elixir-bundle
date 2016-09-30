@@ -37,28 +37,28 @@ class ElixirExtension extends \Twig_Extension
     }
 
     /**
-     * @param $file
+     * @param $asset
      *
      * @return string
      * @throws \Exception
      */
-    public function getAssetVersion($file)
+    public function getAssetVersion($asset)
     {
-        $file = trim($file, '/');
+        $asset = trim($asset, '/');
 
         $manifest = $this->readManifest();
 
-        if (array_key_exists($file, $manifest)) {
+        if (array_key_exists($asset, $manifest)) {
             return sprintf(
                 '%s%s%s%s',
                 DIRECTORY_SEPARATOR,
                 $this->buildDir,
                 DIRECTORY_SEPARATOR,
-                $manifest[$file]
+                $manifest[$asset]
             );
         }
 
-        throw new \Exception("File {$file} not defined in asset manifest.");
+        throw new \Exception(sprintf('File %s not defined in asset manifest.', $asset));
     }
 
     /**
@@ -109,7 +109,7 @@ class ElixirExtension extends \Twig_Extension
         );
 
         if (!file_exists($manifestFile)) {
-            throw new \Exception("File {$manifestFile} not defined in asset manifest.");
+            throw new \Exception(sprintf('File %s not defined in asset manifest.', $manifestFile));
         }
 
         return $manifestFile;

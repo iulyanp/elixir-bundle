@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/iulyanp/elixir-bundle.svg?branch=master)](https://travis-ci.org/iulyanp/elixir-bundle)
+[![StyleCI](https://styleci.io/repos/66156651/shield?branch=master)](https://styleci.io/repos/66156651)
 
 ElixirBundle
 ============

@@ -62,17 +62,31 @@ class ElixirCommand extends ContainerAwareCommand
         }
     }
 
-
+    /**
+     * @param OutputInterface $output
+     * @param string          $error
+     *
+     * @return mixed
+     */
     private function writeError(OutputInterface $output, $error)
     {
         return $output->writeln('<error>'.$error.'</error>');
     }
 
+    /**
+     * @param OutputInterface $output
+     * @param string          $message
+     *
+     * @return mixed
+     */
     private function writeInfo(OutputInterface $output, $message)
     {
-        return $output->writeln("<info>{$message}</info>");
+        return $output->writeln(sprintf('<info>%s</info>', $message));
     }
 
+    /**
+     * @return string
+     */
     private function getPackageContent()
     {
         return '{
@@ -89,25 +103,32 @@ class ElixirCommand extends ContainerAwareCommand
   }
 }';
     }
-    
+
+    /**
+     * @param string $webDir
+     * @param string $buildDir
+     * @param string $assetsPath
+     *
+     * @return string
+     */
     private function getGulpfileContent($webDir, $buildDir, $assetsPath = 'app/Resources/assets')
     {
-        return "// Import Elixir.
+        return sprintf("// Import Elixir.
 var elixir = require('laravel-elixir');
 
 // Configure Elixir.
-elixir.config.publicPath = '{$webDir}';
+elixir.config.publicPath = '%s';
 //elixir.config.appPath = 'src';
-elixir.config.versioning.buildFolder = '{$buildDir}';
-elixir.config.assetsPath = '{$assetsPath}';
+elixir.config.versioning.buildFolder = '%s';
+elixir.config.assetsPath = '%s';
 
 // Set up Elixir tasks.
 elixir(function(mix) {
 
     mix.sass('app.scss')
-        .version(['{$webDir}/css/app.css']);
+        .version(['%s/css/app.css']);
 
-})";
+})", $webDir, $buildDir, $assetsPath, $webDir);
     }
 
     /**
@@ -118,10 +139,11 @@ elixir(function(mix) {
         $this->writeInfo($output, 'Checking requirements...');
 
         $errors = [];
+        $check = [];
         $requirements = ['node', 'npm', 'gulp'];
         foreach ($requirements as $requirement) {
             if (!$checks[$requirement] = exec($requirement.' -v')) {
-                $errors[$requirement] = "You should first install `{$requirement}`.";
+                $errors[$requirement] = sprintf('You should first install `%s`.', $requirement);
             }
         }
 
@@ -129,11 +151,11 @@ elixir(function(mix) {
             foreach ($errors as $error) {
                 $this->writeError($output, $error);
             }
-            exit;
+            die;
         }
 
         foreach ($checks as $key => $check) {
-            $output->writeln(sprintf("%s %s: %s", '<info>[OK]</info>', $key, $check));
+            $output->writeln(sprintf('%s %s: %s', '<info>[OK]</info>', $key, $check));
         }
     }
 
