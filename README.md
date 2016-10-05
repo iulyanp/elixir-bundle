@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.org/iulyanp/elixir-bundle.svg?branch=master)](https://travis-ci.org/iulyanp/elixir-bundle)
 [![StyleCI](https://styleci.io/repos/66156651/shield?branch=master)](https://styleci.io/repos/66156651)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/iulyanp/elixir-bundle/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/iulyanp/elixir-bundle/?branch=master)
 
 ElixirBundle
 ============
