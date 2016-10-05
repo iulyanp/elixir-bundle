@@ -21,4 +21,7 @@ checks:
 filter: {  }
 coding_style:
     php: {  }
-build: true
+build:
+    environment:
+        php:
+            version: 5.6.9
